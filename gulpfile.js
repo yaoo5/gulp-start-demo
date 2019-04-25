@@ -5,6 +5,7 @@ const autoPreFixer = require('autoprefixer');
 const cssNano = require('cssnano');
 const browserSync = require('browser-sync');
 const reload = browserSync.reload;
+const del = require('del');
 
 const paths = {
   styles: {
@@ -16,6 +17,9 @@ const paths = {
   },
 };
 
+// function cleanFiles() {
+//   del('src/css');
+// }
 
 function styles() {
   return src(paths.styles.src)
