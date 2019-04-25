@@ -17,9 +17,9 @@ const paths = {
   },
 };
 
-// function cleanFiles() {
-//   del('src/css');
-// }
+function cleanFiles() {
+  return del(['src/css']);
+}
 
 function styles() {
   return src(paths.styles.src)
@@ -45,4 +45,4 @@ function watchFile() {
   watch(paths.views.src, series(views));
 }
 
-exports.serve = series(styles, watchFile);
+exports.serve = series(cleanFiles, styles, watchFile);
