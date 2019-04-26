@@ -10,8 +10,8 @@ const reload = browserSync.reload;
 
 const paths = {
   styles: {
-    src: 'src/sass/**/*.scss',
-    dest: 'src/css/'
+    src: 'src/Assets/sass/**/*.scss',
+    dest: 'src/Assets/css/'
   },
   views: {
     src: 'src/views/**/*.html',
@@ -19,7 +19,7 @@ const paths = {
 };
 
 function cleanFiles() {
-  return del(['src/css']);
+  return del([paths.styles.dest]);
 }
 
 function styles() {
@@ -31,9 +31,9 @@ function styles() {
 }
 
 function revStyles() {
-  return src('src/css/cold/index.css')
+  return src(`${paths.styles.dest}cold/index.css`)
     .pipe(rev())
-    .pipe(dest('src/css/cold/'));
+    .pipe(dest(`${paths.styles.dest}cold/`));
 }
 
 function views() {
