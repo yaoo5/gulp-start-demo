@@ -44,8 +44,9 @@ function views() {
 function watchFile() {
   browserSync({
     server: {
-      baseDir: ['src'],
-      index: '/views/login.html',
+      baseDir: ['src', 'views'],
+      directory: true,
+      // index: '/views/login.html',
     },
   });
   watch(paths.styles.src, series(styles));
