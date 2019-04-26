@@ -10,7 +10,9 @@ const reload = browserSync.reload;
 
 const paths = {
   styles: {
-    src: 'src/index.scss',
+    base: 'src/',
+    watch: '**/*.scss',
+    src: 'index.scss',
     dest: 'lib/'
   },
   views: {
@@ -24,14 +26,14 @@ function cleanFiles() {
 }
 
 function styles() {
-  return src(paths.styles.src)
+  return src(`${paths.styles.base}${paths.styles.src}`)
     .pipe(sass())
     .pipe(postcss([autoPreFixer(), cssNano()]))
     .pipe(dest(paths.styles.dest))
     .pipe(reload({ stream: true}))
 }
 
-function revStyles() {
+function testStyles() {
   return src(`${paths.styles.dest}index.css`)
     // .pipe(rev())
     .pipe(dest(paths.views.base))
@@ -49,11 +51,10 @@ function watchFile() {
     server: {
       baseDir: ['test', 'lib'],
       directory: true,
-      // index: '/test/page.html',
     },
   });
-  watch(paths.styles.src, series(styles));
+  watch(`${paths.styles.base}${paths.styles.watch}`, series(styles, testStyles));
   watch(paths.views.src, series(views));
 }
 
-exports.serve = series(cleanFiles, styles, revStyles, watchFile );
+exports.serve = series(cleanFiles, styles, testStyles, watchFile );
