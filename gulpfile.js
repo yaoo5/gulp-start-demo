@@ -10,11 +10,12 @@ const reload = browserSync.reload;
 
 const paths = {
   styles: {
-    src: 'src/Assets/sass/**/*.scss',
-    dest: 'src/Assets/css/'
+    src: 'src/index.scss',
+    dest: 'lib/'
   },
   views: {
-    src: 'src/views/**/*.html',
+    base: 'test/',
+    src: 'test/**/*.html',
   },
 };
 
@@ -31,10 +32,12 @@ function styles() {
 }
 
 function revStyles() {
-  return src(`${paths.styles.dest}cold/index.css`)
-    .pipe(rev())
-    .pipe(dest(`${paths.styles.dest}cold/`));
+  return src(`${paths.styles.dest}index.css`)
+    // .pipe(rev())
+    .pipe(dest(paths.views.base))
 }
+
+
 
 function views() {
   return src(paths.views.src)
@@ -44,9 +47,9 @@ function views() {
 function watchFile() {
   browserSync({
     server: {
-      baseDir: ['src', 'views'],
+      baseDir: ['test', 'lib'],
       directory: true,
-      // index: '/views/login.html',
+      // index: '/test/page.html',
     },
   });
   watch(paths.styles.src, series(styles));
