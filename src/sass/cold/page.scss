@@ -15,6 +15,7 @@
     align-items: center;
     background-color: #f3f3f3;
     color: #333;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
   }
 
   @include e(body) {
@@ -38,5 +39,6 @@
     align-items: center;
     background-color: #f3f3f3;
     color: #333;
+    box-shadow: -3px -3px 3px rgba(0, 0, 0, 0.2);
   }
 }
