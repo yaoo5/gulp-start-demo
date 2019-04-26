@@ -1,0 +1,15 @@
+@import "common/var";
+@import "mixins/mixins";
+
+@include b(alert) {
+  border-radius: 5px;
+  padding: 0 12px;
+  line-height: 36px;
+  background-color: #f0f9eb;
+  color: #67c23a;
+
+  @include m(error) {
+    background-color: #fef0f0;
+    color: #f56c6c;
+  }
+}

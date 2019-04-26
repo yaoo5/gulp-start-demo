@@ -24,5 +24,11 @@
       height: auto;
       padding: 24px 12px;
     }
+    &__alert {
+      margin-bottom: 24px;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
   }
 }
