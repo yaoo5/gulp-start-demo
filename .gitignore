@@ -2,3 +2,5 @@
 node_modules
 .gulpfile.swp
 src/Assets/css
+lib/
+test/index.css
