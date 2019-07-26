@@ -12,7 +12,7 @@ const paths = {
   styles: {
     base: 'src/',
     watch: '**/*.scss',
-    src: 'index.scss',
+    src: '*.scss',
     dest: 'lib/'
   },
   views: {
